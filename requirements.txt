@@ -3,3 +3,7 @@ pandas
 scikit-learn 
 transformers 
 azureml-sdk
+matplotlib
+seaborn
+nltk
+imblearn
