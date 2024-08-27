@@ -2,10 +2,13 @@ import pandas as pd
 import re
 
 # Load the dataset
-df = pd.read_csv('Dataset/mtsamples.csv')
+df = pd.read_csv('Dataset/Raw Data/mtsamples.csv')
 
-# Function to extract symptoms or relevant medical information from the transcription and description
 def extract_symptoms(text):
+    # Check if text is a string, otherwise return a default value
+    if not isinstance(text, str):
+        return 'No specific symptoms found'
+
     # Lowercase the text to standardize
     text = text.lower()
     
@@ -27,11 +30,8 @@ def extract_symptoms(text):
     # Return the extracted symptoms or medical information
     return ' | '.join(symptoms) if symptoms else 'No specific symptoms found'
 
-# Apply the function to the 'transcription' column
+# Apply the function to extract symptoms from the 'transcription' column
 df['symptoms'] = df['transcription'].apply(extract_symptoms)
 
-# Save the preprocessed dataset to a new CSV file
-df.to_csv('preprocessed_medical_dataset.csv', index=False)
-
-# Display the first few rows of the updated DataFrame
-print(df.head())
+# Save the processed data to a new CSV file
+df.to_csv('Dataset/Preprocessed Data/processed_dataset.csv', index=False)
