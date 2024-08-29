@@ -7,3 +7,5 @@ matplotlib
 seaborn
 nltk
 imblearn
+gradio
+torch
